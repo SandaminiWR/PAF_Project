@@ -26,8 +26,8 @@ public class User {
 			}
 		
 		// create a prepared statement
-		String query = " insert into user (`id`,`name`,`phone`,`address`,`mail`,'password','confirmpassword')"
-		 + " values (?, ?, ?, ?, ?,?,?)"; 
+		String query = " insert into user (`id`,`name`,`phone`,`address`,`email`,`password`)"
+		 + " values (?, ?, ?, ?, ?,?)"; 
 		PreparedStatement preparedStmt = con.prepareStatement(query); 
 		// binding values
 		
@@ -39,7 +39,7 @@ public class User {
 			preparedStmt.setString(4,address); 
 			preparedStmt.setString(5, mail);
 			preparedStmt.setString(6,password); 
-			preparedStmt.setString(7, confirmpassword);
+			
 			
 			//execute the statement
 			preparedStmt.execute(); 
@@ -104,6 +104,7 @@ public class User {
 					// buttons
 					output += "<td><input name='btnUpdate' type='button' value='Update'></td>"
 					 + "<td><form method='post' action='User.jsp'>"
+							
 					 + "<input name='btnRemove' type='submit' value='Remove'>"
 					 + "<input name=‘id’ type=‘hidden’ value=‘" + UserID + "‘>" 
 					 + "</form></td></tr>"; 

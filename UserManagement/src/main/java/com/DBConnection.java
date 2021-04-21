@@ -19,7 +19,7 @@ public class DBConnection {
 	static {		
 				
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
+			Class.forName("com.mysql.cj.jdbc.Driver");
 			con = DriverManager.getConnection( url, user, passwrd);
 			 System.out.print("Successfully connected"); 
 		} catch (ClassNotFoundException e) {

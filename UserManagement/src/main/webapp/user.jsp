@@ -24,6 +24,8 @@ if (request.getParameter("name") != null)
 	 				request.getParameter("confirmpassword")); 
  
  session.setAttribute("statusMsg", stsMsg); 
+ 
+ 
 
  //DBConnection db = new DBConnection(); 
   //For testing the connect method
@@ -55,9 +57,14 @@ if (request.getParameter("name") != null)
  
 	</form>
 	<% out.print(session.getAttribute("statusMsg")); %>
+	<br>
+	<%
+		 User userObj = new User(); 
+		 out.print(userObj.readUser()); 
+	%>
 	
 <br>
-	<table border="1">
+	<!--  <table border="1">
 		<tr>
 			<th>ID</th>
 			<th>Name</th>
@@ -85,7 +92,7 @@ if (request.getParameter("name") != null)
 		
 		
 	</table>
-
+-->
 
 </body>
 </html>
