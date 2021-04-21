@@ -58,7 +58,6 @@ public class Item {
 					preparedStmt.setString(6, desc);
 					preparedStmt.setDouble(7, Double.parseDouble(price));
 					
-
 					preparedStmt.execute();
 					con.close();
 					output = "Inserted Successfully";
