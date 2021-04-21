@@ -63,6 +63,7 @@ public class Item {
 					con.close();
 					output = "Inserted Successfully";
 					
+					
 				} catch (SQLException e) {
 					output = "Error while inserting";
 					System.err.println(e.getMessage());
