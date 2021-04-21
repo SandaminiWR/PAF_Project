@@ -113,10 +113,10 @@ public class Item {
 						output += "<td>" + itemPrice + "</td>";
 						
 						// Buttons
-						output += "<td>" + "<form method='post' action='itemps.jsp'>"
+						output += "<td>" + "<form method='post' action='item.jsp'>"
 								+ "<input name='btnUpdate' type='submit' value='Update' class='btn btn-info' >" 
 								+ "<input name='update_itemID' type='hidden' value='" + itemID + "'>" + "</form>" + "<td>"
-								+ "<form method='post' action='itemps.jsp'>"
+								+ "<form method='post' action='item.jsp'>"
 								+ "<input name='btnRemove' type='submit' value='Remove' class='btn btn-danger'>"
 								+ "<input name='itemID' type='hidden' value='" + itemID + "'>" + "</form></td></tr>";
 					}
