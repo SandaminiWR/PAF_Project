@@ -121,6 +121,38 @@ public class User {
 		 return output; 
 	}
 
+	public String deleteItem(String id)
+	{ 
+		 String output = ""; 
+		try
+		{ 
+			Connection con = DBConnection.getConnection();
+		
+			if (con == null) { 
+		      return "Error while connecting to the database for deleting."; 
+		    } 
+			
+			// create a prepared statement
+			String query = "delete from items where id=?"; 
+			PreparedStatement preparedStmt = con.prepareStatement(query); 
+			// binding values
+			preparedStmt.setInt(1, Integer.parseInt(id)); 
+			 
+			// execute the statement
+			preparedStmt.execute(); 
+			con.close(); 
+			output = "Deleted successfully";
+
+		} 
+		catch (Exception e) 
+		{ 
+		output = "Error while deleting the user."; 
+		 System.err.println(e.getMessage()); 
+		}
+	
+	 return output; 
+	}
+
 
 
 }

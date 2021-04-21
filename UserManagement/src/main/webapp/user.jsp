@@ -1,3 +1,4 @@
+<%@page import="net.sourceforge.jtds.jdbc.RequestStream"%>
 <%@page import="com.User"%>
 <%@page import="com.DBConnection"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -5,6 +6,9 @@
     
     
     <%
+
+  //Insert item---------------------------------
+  
 if (request.getParameter("name") != null) 
 { 
 // session.setAttribute("id", request.getParameter("id")); 
@@ -32,6 +36,16 @@ if (request.getParameter("name") != null)
  
 
 } 
+  //Delete item----------------------------------
+  
+    if (request.getParameter("UserID") != null)
+    { 
+    	 User user = new User(); 
+    	 String stsMsg = user.deleteItem(request.getParameter("UserID"));
+    	 session.setAttribute("statusMsg", stsMsg); 
+
+    }
+
 %>
 
 <!DOCTYPE html>
