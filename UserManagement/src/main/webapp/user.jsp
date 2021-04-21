@@ -1,9 +1,10 @@
+<%@page import="com.DBConnection"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     
     
     <%
-if (request.getParameter("itemCode") != null) 
+if (request.getParameter("id") != null) 
 { 
  session.setAttribute("id", request.getParameter("id")); 
  session.setAttribute("name", request.getParameter("name")); 
@@ -12,6 +13,12 @@ if (request.getParameter("itemCode") != null)
  session.setAttribute("mail", request.getParameter("mail")); 
  session.setAttribute("password", request.getParameter("password")); 
  session.setAttribute("confirmpassword", request.getParameter("confirmpassword"));
+ 
+
+ DBConnection db = new DBConnection(); 
+  db.connect();//For testing the connect method
+ 
+
 } 
 %>
 
@@ -26,7 +33,7 @@ if (request.getParameter("itemCode") != null)
 	
 	
 <h1>User Management</h1>
-	<form method="post" action="User.jsp">
+	<form method="post" action="user.jsp">
 		 ID: <input name="id" type="text"><br>
 		 Name: <input name="name" type="text"><br>
 		 Phone: <input name="phone" type="number"><br>
