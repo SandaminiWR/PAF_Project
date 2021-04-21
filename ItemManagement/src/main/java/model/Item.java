@@ -47,6 +47,7 @@ public class Item {
 				String query = " insert into item (`itemID`,`itemCode`,`itemCategory`,`itemName`,`itemBrand`,`itemDesc`,`itemPrice`)" + " values (?, ?, ?, ?, ?, ?, ?)";
 				PreparedStatement preparedStmt;
 				try {
+					
 					preparedStmt = con.prepareStatement(query);
 
 					preparedStmt.setInt(1, 0);
