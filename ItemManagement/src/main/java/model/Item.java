@@ -10,6 +10,7 @@ import java.sql.Statement;
 public class Item {
 
 
+	
 	// DB Connection
 		public Connection connect()
 		{ 
@@ -34,7 +35,6 @@ public class Item {
 		}
 		
 		
-		
 		// Insert Items
 			public String insertItem(String code, String category, String name, String brand, String desc, String price) {
 				Connection con = connect();
@@ -43,6 +43,7 @@ public class Item {
 					return "Error while connecting to the database";
 				}
 
+				
 				// create a prepared statement
 				String query = " insert into item (`itemID`,`itemCode`,`itemCategory`,`itemName`,`itemBrand`,`itemDesc`,`itemPrice`)" + " values (?, ?, ?, ?, ?, ?, ?)";
 				PreparedStatement preparedStmt;
