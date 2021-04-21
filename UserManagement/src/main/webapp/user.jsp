@@ -1,4 +1,4 @@
-<%@page import="net.sourceforge.jtds.jdbc.RequestStream"%>
+
 <%@page import="com.User"%>
 <%@page import="com.DBConnection"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
@@ -7,11 +7,11 @@
     
     <%
 
-  //Insert item---------------------------------
+  
   
 if (request.getParameter("name") != null) 
 { 
-// session.setAttribute("id", request.getParameter("id")); 
+
  session.setAttribute("name", request.getParameter("name")); 
  session.setAttribute("phone", request.getParameter("phone")); 
  session.setAttribute("address", request.getParameter("address"));
@@ -31,20 +31,23 @@ if (request.getParameter("name") != null)
  
  
 
- //DBConnection db = new DBConnection(); 
-  //For testing the connect method
+
  
 
 } 
-  //Delete item----------------------------------
-  
-    if (request.getParameter("UserID") != null)
+    
+    if (request.getParameter("uid") != null) 
     { 
-    	 User user = new User(); 
-    	 String stsMsg = user.deleteItem(request.getParameter("UserID"));
-    	 session.setAttribute("statusMsg", stsMsg); 
-
-    }
+    
+    User usr = new User(); 
+    String stsMsg = usr.deleteUser(request.getParameter("uid")); 
+    session.setAttribute("statusMsg", stsMsg); 
+    } 
+  
+  
+ 
+    
+  
 
 %>
 

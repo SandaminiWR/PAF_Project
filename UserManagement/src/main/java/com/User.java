@@ -39,11 +39,11 @@ public class User {
 			preparedStmt.setString(4,address); 
 			preparedStmt.setString(5, mail);
 			preparedStmt.setString(6,password); 
-			
+			System.out.print(name);
 			
 			//execute the statement
 			preparedStmt.execute(); 
-			con.close();
+			//con.close();
 			
 			output = "Insert Successfull"; 
 		}else {
@@ -103,10 +103,10 @@ public class User {
 					output += "<td>" + password + "</td>"; 
 					// buttons
 					output += "<td><input name='btnUpdate' type='button' value='Update'></td>"
-					 + "<td><form method='post' action='User.jsp'>"
+					 + "<td><form method='post' action='user.jsp'>"
 							
 					 + "<input name='btnRemove' type='submit' value='Remove'>"
-					 + "<input name=‘id’ type=‘hidden’ value=‘" + UserID + "‘>" 
+					 + "<input name='uid' type='hidden' value='" + UserID + "'>" 
 					 + "</form></td></tr>"; 
 				}
 				
@@ -121,7 +121,7 @@ public class User {
 		 return output; 
 	}
 
-	public String deleteItem(String id)
+	public String deleteUser(String id)
 	{ 
 		 String output = ""; 
 		try
@@ -133,14 +133,14 @@ public class User {
 		    } 
 			
 			// create a prepared statement
-			String query = "delete from items where id=?"; 
+			String query = "delete from user where id=?"; 
 			PreparedStatement preparedStmt = con.prepareStatement(query); 
 			// binding values
 			preparedStmt.setInt(1, Integer.parseInt(id)); 
 			 
 			// execute the statement
 			preparedStmt.execute(); 
-			con.close(); 
+			//con.close(); 
 			output = "Deleted successfully";
 
 		} 
