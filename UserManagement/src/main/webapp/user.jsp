@@ -1,12 +1,13 @@
+<%@page import="com.User"%>
 <%@page import="com.DBConnection"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     
     
     <%
-if (request.getParameter("id") != null) 
+if (request.getParameter("name") != null) 
 { 
- session.setAttribute("id", request.getParameter("id")); 
+// session.setAttribute("id", request.getParameter("id")); 
  session.setAttribute("name", request.getParameter("name")); 
  session.setAttribute("phone", request.getParameter("phone")); 
  session.setAttribute("address", request.getParameter("address"));
@@ -14,9 +15,18 @@ if (request.getParameter("id") != null)
  session.setAttribute("password", request.getParameter("password")); 
  session.setAttribute("confirmpassword", request.getParameter("confirmpassword"));
  
+ User user = new User(); 
+ String stsMsg = user.insertUser(request.getParameter("name"), 
+ 					request.getParameter("phone"), 
+	 				request.getParameter("address"), 
+ 					request.getParameter("mail"), 
+ 					request.getParameter("password"), 
+	 				request.getParameter("confirmpassword")); 
+ 
+ session.setAttribute("statusMsg", stsMsg); 
 
- DBConnection db = new DBConnection(); 
-  db.connect();//For testing the connect method
+ //DBConnection db = new DBConnection(); 
+  //For testing the connect method
  
 
 } 
@@ -34,7 +44,7 @@ if (request.getParameter("id") != null)
 	
 <h1>User Management</h1>
 	<form method="post" action="user.jsp">
-		 ID: <input name="id" type="text"><br>
+		 ID: <input name="id" type="hidden"><br>
 		 Name: <input name="name" type="text"><br>
 		 Phone: <input name="phone" type="number"><br>
 		 Address : <input name="address" type="text"><br>
@@ -44,6 +54,8 @@ if (request.getParameter("id") != null)
 		 <input name="btnSubmit" type="submit" value="Save">
  
 	</form>
+	<% out.print(session.getAttribute("statusMsg")); %>
+	
 <br>
 	<table border="1">
 		<tr>
