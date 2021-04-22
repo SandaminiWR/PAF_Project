@@ -120,6 +120,48 @@ public class User {
 		 
 		 return output; 
 	}
+	
+	public String updateUser(String ID,String name, String phone, String address, String mail,String password,String confirmpassword) 
+
+	 {
+		 String output = "";
+		 try
+		 {
+			 Connection con = DBConnection.getConnection();
+		 if (con == null)
+		 	{return "Error while connecting to the database for updating.";
+		 	
+		 }
+		 
+		 // create a prepared statement
+		 if(password.equals(confirmpassword)) {
+			 
+				 String query = "UPDATE user SET name=?,phone=?,address=?,email=?,password=? WHERE id=?";
+				 PreparedStatement preparedStmt = con.prepareStatement(query);
+				 // binding values
+				 preparedStmt.setString(1, name);
+				 preparedStmt.setString(2, phone);
+				 preparedStmt.setString(3, address);
+				 preparedStmt.setString(4, mail);
+				 preparedStmt.setString(5, password);
+				 preparedStmt.setInt(6, Integer.parseInt(ID));
+				 // execute the statement
+				 preparedStmt.execute();
+				 //con.close();
+				 output = "Updated successfully";
+		 }else {
+			 output = "Password not matched";
+		 }
+			
+		 }
+		 catch (Exception e)
+		 {
+			 output = "Error while updating the user.";
+			 System.err.println(e.getMessage());
+		 }
+		 return output;
+		 }
+
 
 	public String deleteUser(String id)
 	{ 
