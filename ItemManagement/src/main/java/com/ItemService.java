@@ -27,19 +27,24 @@ public class ItemService {
 
 	Item itemObj = new Item();
 
+	//Read Item () method
+	
 	@GET
 	@Path("/")
 	@Produces(MediaType.TEXT_HTML)
+	
 	public String readItems() {
 		return itemObj.readItems();
 	}
 
+	
 	//Insert Item() method
 	
 	@POST
 	@Path("/") 
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED) 
 	@Produces(MediaType.TEXT_PLAIN) 
+	
 	public String insertItem(@FormParam("itemCode") String itemCode, 
 							@FormParam("itemCategory") String itemCategory, 
 							@FormParam("itemName") String itemName, 
@@ -84,6 +89,7 @@ public class ItemService {
 	@Path("/") 
 	@Consumes(MediaType.APPLICATION_XML) 
 	@Produces(MediaType.TEXT_PLAIN) 
+	
 	public String deleteItem(String itemData) 
 	{ 
 	//Convert the input string to an XML document
