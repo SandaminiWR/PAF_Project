@@ -53,6 +53,7 @@ public class ItemService {
 							@FormParam("itemPrice") String itemPrice)
 	{ 
 	 String output = itemObj.insertItem(itemCode, itemCategory, itemName, itemBrand, itemDesc, itemPrice); 
+	 
 	return output; 
 	}
 
@@ -67,8 +68,10 @@ public class ItemService {
 	
 	public String updateItem(String itemData) 
 	{ 
+		
 	//Convert the input string to a JSON object 
 	 JsonObject itemObject = new JsonParser().parse(itemData).getAsJsonObject(); 
+	 
 	//Read the values from the JSON object
 	 String itemID = itemObject.get("itemID").getAsString(); 
 	 String itemCode = itemObject.get("itemCode").getAsString(); 
@@ -77,7 +80,9 @@ public class ItemService {
 	 String itemBrand = itemObject.get("itemBrand").getAsString(); 
 	 String itemDesc = itemObject.get("itemDesc").getAsString(); 
 	 String itemPrice = itemObject.get("itemPrice").getAsString(); 
+	 
 	 String output = itemObj.updateItem(itemID, itemCode, itemCategory, itemName, itemBrand, itemDesc, itemPrice); 
+	 
 	return output; 
 	}
 	
@@ -92,12 +97,14 @@ public class ItemService {
 	
 	public String deleteItem(String itemData) 
 	{ 
+		
 	//Convert the input string to an XML document
 	 Document doc = Jsoup.parse(itemData, "", Parser.xmlParser()); 
 	 
 	//Read the value from the element <itemID>
 	 String itemID = doc.select("itemID").text(); 
 	 String output = itemObj.deleteItem(itemID); 
+	 
 	return output; 
 	}
 	
