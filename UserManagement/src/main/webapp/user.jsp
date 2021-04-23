@@ -123,6 +123,7 @@ if (request.getParameter("name") != null)
 			<input name="confirmpassword" type="password" id="txtName">
 			</div><br>
 			
+		
 			
 		<input name="btnSubmit" type="submit" value="Save" id="btnSave" class="btn btn-primary">
  
@@ -140,7 +141,30 @@ if (request.getParameter("name") != null)
  </div>
 </div>
  
-	<% out.print(session.getAttribute("statusMsg")); %>
+	 
+	 <body>
+ 
+    <%
+        if ("Insert Successfull".equals(session.getAttribute("statusMsg"))) {
+    %>
+        <div class="alert alert-success" id="alertSuccess">
+        <% out.print(session.getAttribute("statusMsg")); %>	</div>
+    <%
+        } 
+        else {
+    %>
+        <div id="alertError" class="alert alert-danger">
+		<% out.print(session.getAttribute("statusMsg")); %>	</div>
+    <%
+        }
+    %>
+ 
+</body>
+	 
+	 
+	 
+	 
+	 
 	<br>
 	<%
 		 User userObj = new User(); 

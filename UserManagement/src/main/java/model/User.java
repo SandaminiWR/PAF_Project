@@ -258,6 +258,54 @@ public class User {
 		 return output; 
 	}
 
-
+	public String userlogin(String id ,String password )
+	{
+		
+		String output="";
+		
+		try {
+			
+			Connection con = DBConnection.getConnection();
+			
+			if (con == null) 
+			{ 
+				return "Error while connecting to the database"; 
+			}
+		
+		// create a prepared statement
+		String query = "select * from user where id = '"+id+"'";
+		Statement stmt = con.createStatement(); 
+		ResultSet rs = stmt.executeQuery(query);
+		// binding values
+		
+		while (rs.next()) 
+		{ 
+			 //String UserID = Integer.toString(rs.getInt(1)); 
+			 String pwd = rs.getString(6);
+			 
+			 
+			 
+			 if(pwd.equals(password)) {
+				 
+				 output = "Login Successfull";
+			 }else {
+				 output = "Authentication Fails";
+			 }
+		}
+		
+			//con.close();
+			
+			//output = "Insert Successfull"; 
+		}
+		 
+		catch (Exception e) 
+		{ 
+			output = "Error while Login"; 
+			System.err.println(e.getMessage()); 
+		} 
+		return output; 
+	}
+	
+	
 
 }

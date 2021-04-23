@@ -92,6 +92,23 @@ public class UserService {
 			    
 			    
 			    
+			    
+			    
+			    
+			    @POST
+			    @Path("/login") 
+			    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+			    @Produces(MediaType.TEXT_PLAIN) 
+			    //login  method
+			    public String login( @FormParam("id")String id, @FormParam("password")String password)
+			    {
+			    	System.out.print("run");
+			        return usObj.userlogin(id,password) ;
+			    }
+			    
+			    
+			    
+			    
 
 }
 
