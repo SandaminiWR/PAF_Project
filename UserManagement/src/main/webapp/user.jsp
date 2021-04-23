@@ -53,26 +53,93 @@ if (request.getParameter("name") != null)
 
 <!DOCTYPE html>
 <html>
+
+
 <head>
 <meta charset="ISO-8859-1">
 <title>User Management</title>
+
+<link rel="stylesheet" href="Views/bootstrap.min.css">
+<script src="Components/jquery-3.2.1.min.js"></script>
+<script src="Components/main.js"></script>
+
 </head>
 <body>
 
+<div class="container"> 
+ <div class="row">
+ <div class="col-8"> 	
 	
+<h1 class="m-3">User Management</h1>
+	<form method="post" action="user.jsp" id="formStudent">
 	
-<h1>User Management</h1>
-	<form method="post" action="user.jsp">
-		 ID: <input name="id" type="hidden"><br>
-		 Name: <input name="name" type="text"><br>
-		 Phone: <input name="phone" type="number"><br>
-		 Address : <input name="address" type="text"><br>
-		 Mail : <input name="mail" type="email"><br>
-		 Password : <input name="password" type="password"><br>
-		 Confirm Password : <input name="confirmpassword" type="password"><br>
-		 <input name="btnSubmit" type="submit" value="Save">
+					 <!-- ID -->
+			<div class="input-group input-group-sm mb-3">
+			<div class="input-group-prepend">
+			 <span class="input-group-text" id="lblName">ID: </span>
+			</div> 
+			<input name="id" type="hidden" id="txtName">
+			</div><br>
+					 <!-- name -->
+			<div class="input-group input-group-sm mb-3">
+			<div class="input-group-prepend">
+			 <span class="input-group-text" id="lblName">Name: </span>
+			</div> 
+			<input name="name" type="text" id="txtName">
+			</div><br>
+						 <!-- phone -->
+			<div class="input-group input-group-sm mb-3">
+			<div class="input-group-prepend">
+			 <span class="input-group-text" id="lblName">Phone: </span>
+			</div> 
+			<input name="phone" type="tel" id="txtName">
+			</div><br>
+						 <!-- address -->
+			<div class="input-group input-group-sm mb-3">
+			<div class="input-group-prepend">
+			 <span class="input-group-text" id="lblName">Address: </span>
+			</div> 
+			<input name="address" type="text" id="txtName">
+			</div><br>
+						 <!-- mail -->
+			<div class="input-group input-group-sm mb-3">
+			<div class="input-group-prepend">
+			 <span class="input-group-text" id="lblName">Mail: </span>
+			</div> 
+			<input name="mail" type="email" id="txtName">
+			</div><br>
+						<!-- pass -->
+			<div class="input-group input-group-sm mb-3">
+			<div class="input-group-prepend">
+			 <span class="input-group-text" id="lblName">Password: </span>
+			</div> 
+            <input name="password" type="password" id="txtName">	
+            </div><br>
+						<!-- c pass -->
+			<div class="input-group input-group-sm mb-3">
+			<div class="input-group-prepend">
+			 <span class="input-group-text" id="lblName"> Confirm Password: </span>
+			</div> 
+			<input name="confirmpassword" type="password" id="txtName">
+			</div><br>
+			
+			
+		<input name="btnSubmit" type="submit" value="Save" id="btnSave" class="btn btn-primary">
  
 	</form>
+	
+	</div>
+ </div>
+ 
+ <br>
+ 
+ <div class="row">
+ <div class="col-12" id="colStudents">
+ 
+ </div>
+ </div>
+</div>
+ 
 	<% out.print(session.getAttribute("statusMsg")); %>
 	<br>
 	<%
