@@ -4,49 +4,62 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     
-    
-    <%
-
-  
+     
+ <%
   
 if (request.getParameter("name") != null) 
-{ 
+	{ 
 
- session.setAttribute("name", request.getParameter("name")); 
- session.setAttribute("phone", request.getParameter("phone")); 
- session.setAttribute("address", request.getParameter("address"));
- session.setAttribute("mail", request.getParameter("mail")); 
- session.setAttribute("password", request.getParameter("password")); 
- session.setAttribute("confirmpassword", request.getParameter("confirmpassword"));
+	 session.setAttribute("name", request.getParameter("name")); 
+	 session.setAttribute("phone", request.getParameter("phone")); 
+	 session.setAttribute("address", request.getParameter("address"));
+	 session.setAttribute("mail", request.getParameter("mail")); 
+	 session.setAttribute("password", request.getParameter("password")); 
+	 session.setAttribute("confirmpassword", request.getParameter("confirmpassword"));
  
- User user = new User(); 
- String stsMsg = user.insertUser(request.getParameter("name"), 
- 					request.getParameter("phone"), 
-	 				request.getParameter("address"), 
- 					request.getParameter("mail"), 
- 					request.getParameter("password"), 
-	 				request.getParameter("confirmpassword")); 
+			 User user = new User(); 
+				 String stsMsg = user.insertUser(request.getParameter("name"), 
+				 					request.getParameter("phone"), 
+					 				request.getParameter("address"), 
+				 					request.getParameter("mail"), 
+				 					request.getParameter("password"), 
+					 				request.getParameter("confirmpassword")); 
  
- session.setAttribute("statusMsg", stsMsg); 
+ 			session.setAttribute("statusMsg", stsMsg); 
  
+	} 
  
+ if (request.getParameter("name") != null) 
+	{ 
 
+	 session.setAttribute("name", request.getParameter("name")); 
+	 session.setAttribute("phone", request.getParameter("phone")); 
+	 session.setAttribute("address", request.getParameter("address"));
+	 session.setAttribute("mail", request.getParameter("mail")); 
+	 session.setAttribute("password", request.getParameter("password")); 
+	 session.setAttribute("confirmpassword", request.getParameter("confirmpassword"));
 
+			 User user1 = new User(); 
+				 String stsMsg = user1.updateUser(request.getParameter("id"),
+						 			request.getParameter("name"),
+				 					request.getParameter("phone"), 
+					 				request.getParameter("address"), 
+				 					request.getParameter("mail"), 
+				 					request.getParameter("password"), 
+					 				request.getParameter("confirmpassword")); 
+
+			session.setAttribute("statusMsg", stsMsg); 
+
+	} 
  
-
-} 
     
-    if (request.getParameter("uid") != null) 
+ if (request.getParameter("uid") != null) 
     { 
     
     User usr = new User(); 
     String stsMsg = usr.deleteUser(request.getParameter("uid")); 
     session.setAttribute("statusMsg", stsMsg); 
     } 
-  
-  
- 
-    
   
 
 %>

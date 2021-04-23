@@ -7,10 +7,6 @@ import java.sql.Statement;
 
 public class User {
 	
-	private static ResultSet rs = null;
-	private static PreparedStatement pst = null;
-	private static Statement stmt = null;
-	
 	public String insertUser(String name, String phone, String address, String mail,String password,String confirmpassword) 
 	{
 		

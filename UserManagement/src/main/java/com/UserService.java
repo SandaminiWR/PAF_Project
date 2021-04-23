@@ -84,8 +84,9 @@ public class UserService {
 			    @Path("/readUsers/{username}") 
 			    @Consumes(MediaType.APPLICATION_XML)
 			    @Produces(MediaType.TEXT_HTML) 
+			    
 			    //call read all user details  method
-			    public String readUsers( @PathParam(value = "username")String name)
+	public String readUsers( @PathParam(value = "username")String name)
 			    {
 			        return usObj.RequestReadUserDetails(name) ;
 			    }
@@ -93,14 +94,14 @@ public class UserService {
 			    
 			    
 			    
-			    
-			    
+			   
 			    @POST
 			    @Path("/login") 
 			    @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
 			    @Produces(MediaType.TEXT_PLAIN) 
 			    //login  method
-			    public String login( @FormParam("id")String id, @FormParam("password")String password)
+			    
+	public String login( @FormParam("id")String id, @FormParam("password")String password)
 			    {
 			    	System.out.print("run");
 			        return usObj.userlogin(id,password) ;
