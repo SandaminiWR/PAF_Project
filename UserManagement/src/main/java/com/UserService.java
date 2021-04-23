@@ -78,6 +78,21 @@ public class UserService {
 				 String output = usObj.deleteUser(UserID); 
 				return output; 
 			}
+			
+			
+			    @GET
+			    @Path("/readUsers/{username}") 
+			    @Consumes(MediaType.APPLICATION_XML)
+			    @Produces(MediaType.TEXT_HTML) 
+			    //call read all funding bodies method
+			    public String readUsers( @PathParam(value = "username")String name)
+			    {
+			        
+
+			 
+
+			        return usObj.RequestReadUserDetails(name) ;
+			    }
 
 }
 

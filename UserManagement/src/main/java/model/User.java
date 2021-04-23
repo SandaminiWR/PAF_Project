@@ -194,6 +194,70 @@ public class User {
 	
 	 return output; 
 	}
+	
+	
+	
+	public String RequestReadUserDetails(String name)
+	{ 
+		 String output = ""; 
+		 
+		 try {
+				
+				Connection con = DBConnection.getConnection();
+				
+				if (con == null) 
+				{ 
+					return "Error while connecting to the database"; 
+				}
+				
+				// Prepare the html table to be displayed
+				output = "<table border='1'>" 
+				+ "<tr><th>User ID</th><th>Name</th><th>Phone</th><th>Address</th>"
+				+ "<th>Email</th><th>Update</th><th>Remove</th></tr>";
+
+				
+				String query = "select * from user where name = '"+ name + "' ";
+				 
+				Statement stmt = con.createStatement(); 
+				ResultSet rs = stmt.executeQuery(query); 
+				
+				
+				// iterate through the rows in the result set
+				while (rs.next()) 
+				{ 
+					 String UserID = Integer.toString(rs.getInt(1)); 
+					 String userName = rs.getString(2); 
+					 String phone = rs.getString(3); 
+					 String address = rs.getString(4); 
+					 String email = rs.getString(5);
+					// String password = rs.getString(6);
+					 
+					// Add into the html table
+					output += "<tr><td>" + UserID + "</td>"; 
+					output += "<td>" + userName + "</td>"; 
+					output += "<td>" + phone + "</td>"; 
+					output += "<td>" + address + "</td>"; 
+					output += "<td>" + email + "</td>"; 
+					
+					// buttons
+					output += "<td><input name='btnUpdate' type='button' value='Update'></td>"
+					 + "<td><form method='post' action='user.jsp'>"
+							
+					 + "<input name='btnRemove' type='submit' value='Remove'>"
+					 + "<input name='uid' type='hidden' value='" + UserID + "'>" 
+					 + "</form></td></tr>"; 
+				}
+				
+		 }catch (Exception e) 
+		 { 
+				output = "Error while retriving Data"; 
+				System.err.println(e.getMessage()); 
+		 } 
+		 
+		 
+		 
+		 return output; 
+	}
 
 
 
