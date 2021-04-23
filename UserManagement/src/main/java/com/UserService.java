@@ -73,7 +73,7 @@ public class UserService {
 				//Convert the input string to an XML document
 				 Document doc = Jsoup.parse(userData, "", Parser.xmlParser()); 
 				 
-				//Read the value from the element <itemID>
+				//Read the value from the element <ID>
 				 String UserID = doc.select("id").text(); 
 				 String output = usObj.deleteUser(UserID); 
 				return output; 
@@ -84,12 +84,9 @@ public class UserService {
 			    @Path("/readUsers/{username}") 
 			    @Consumes(MediaType.APPLICATION_XML)
 			    @Produces(MediaType.TEXT_HTML) 
-			    //call read all funding bodies method
+			    //call read all user details  method
 			    public String readUsers( @PathParam(value = "username")String name)
 			    {
-			        
-
-			 
 			        return usObj.RequestReadUserDetails(name) ;
 			    }
 			    
