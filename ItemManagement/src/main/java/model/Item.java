@@ -7,14 +7,15 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+//server-model Implementation
 public class Item {
 
 
 	
-	// DB Connection
+	    // DB Connection method
 		public Connection connect()
 		{ 
-		 Connection con = null; 
+			Connection con = null; 
 		 
 		 try 
 		 { 
@@ -35,7 +36,7 @@ public class Item {
 		}
 		
 		
-		// Insert Items
+		    //Insert Items
 			public String insertItem(String code, String category, String name, String brand, String desc, String price) {
 				Connection con = connect();
 				String output = "";
@@ -75,7 +76,7 @@ public class Item {
 			
 			
 
-			// Read Items
+			//Read Items
 			public String readItems() {
 				String output = "";
 
@@ -111,6 +112,7 @@ public class Item {
 						output += "<td>" + itemBrand + "</td>";
 						output += "<td>" + itemDesc + "</td>";
 						output += "<td>" + itemPrice + "</td>";
+						
 						
 						// Buttons
 						output += "<td>" + "<form method='post' action='item.jsp'>"
@@ -169,7 +171,7 @@ public class Item {
 			
 			
 				
-			// Delete Items
+			//Delete Items
 			public String deleteItem(String itemID)
 			{ 
 			 String output = ""; 

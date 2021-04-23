@@ -23,12 +23,13 @@ import model.Item;
 @Path("/Item")
 
 
+//RESTful API Implementation	
 public class ItemService {
 
 	Item itemObj = new Item();
 
-	//Read Item () method
 	
+	//Read Item () method
 	@GET
 	@Path("/")
 	@Produces(MediaType.TEXT_HTML)
@@ -39,7 +40,6 @@ public class ItemService {
 
 	
 	//Insert Item() method
-	
 	@POST
 	@Path("/") 
 	@Consumes(MediaType.APPLICATION_FORM_URLENCODED) 
@@ -60,7 +60,6 @@ public class ItemService {
 	
 	
 	//Update Item() method
-	
 	@PUT
 	@Path("/") 
 	@Consumes(MediaType.APPLICATION_JSON) 
@@ -89,7 +88,6 @@ public class ItemService {
 	
 	
 	//Delete Item() method
-	
 	@DELETE
 	@Path("/") 
 	@Consumes(MediaType.APPLICATION_XML) 
