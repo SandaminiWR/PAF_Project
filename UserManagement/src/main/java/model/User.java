@@ -99,7 +99,7 @@ public class User {
 					output += "<td>" + email + "</td>"; 
 					output += "<td>" + password + "</td>"; 
 					
-					/*// buttons
+					// buttons
 					output += "<td><input name='btnUpdate' type='button' value='Update'></td>"
 							
 							
@@ -108,13 +108,10 @@ public class User {
 					 + "<input name='btnRemove' type='submit' value='Remove'>"
 					 + "<input name='uid' type='hidden' value='" + UserID + "'>" 
 					 + "</form></td></tr>";  
-					 * 
-					 * 
-					 * 
-					 * 
-					 */
+					 
+					 
 					// buttons
-					output +=
+					/*output +=
 							
 							
 					  "<td><form method='post' action='user.jsp'>"
@@ -122,7 +119,7 @@ public class User {
 					+ "<input name='uid' type='hidden' value='" + UserID + "'>"		  
 					 + "<input name='btnRemove' type='submit' value='Remove'>"
 					 + "<input name='uid' type='hidden' value='" + UserID + "'>" 
-					 + "</form></td></tr>"; 
+					 + "</form></td></tr>"; */
 				}
 				
 		 }catch (Exception e) 
