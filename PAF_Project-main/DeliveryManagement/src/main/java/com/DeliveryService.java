@@ -1,18 +1,21 @@
 package com;
+//For REST Service
+import javax.ws.rs.*; 
+import javax.ws.rs.core.MediaType; 
+//For JSON
+import com.google.gson.*;
 
-import javax.swing.text.Document;
+//For XML
+import org.jsoup.*; 
+import org.jsoup.parser.*; 
+import org.jsoup.nodes.Document; 
+
 
 import model.Delivery;
-
+@Path("/Delivery")
 public class DeliveryService {
+	
 	Delivery deliveryObj = new Delivery(); 
-	@GET
-	@Path("/") 
-	@Produces(MediaType.TEXT_HTML) 
-	public String readDelivery() 
-	 { 
-	 return "Hello"; 
-	 } 
 
 	@GET
 	@Path("/") 
@@ -50,6 +53,7 @@ public class DeliveryService {
 	 String output = deliveryObj.updateDelivery(DID, CID, Dtype, Ddesc); 
 	return output; 
 	}
+	
 	@DELETE
 	@Path("/") 
 	@Consumes(MediaType.APPLICATION_XML) 

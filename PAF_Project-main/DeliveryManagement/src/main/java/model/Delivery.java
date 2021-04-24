@@ -1,11 +1,14 @@
 package model;
 
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
-import com.mysql.jdbc.Connection;
-import com.mysql.jdbc.PreparedStatement;
-import com.mysql.jdbc.Statement;
+
 
 public class Delivery {
 	//A common method to connect to the DB
@@ -17,7 +20,7 @@ public class Delivery {
 				Class.forName("com.mysql.jdbc.Driver"); 
 	 
 				//Provide the correct details 
-				con = DeliveryManager.getConnection("jdbc:mysql://127.0.0.1:3306/test", "root", ""); 
+				con = DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/PAF", "root", ""); 
 			} 
 			catch (Exception e) 
 			{e.printStackTrace();} 
