@@ -12,7 +12,7 @@ public class Item {
 
 
 	
-	    // DB Connection method
+	    //DB Connection method
 		public Connection connect()
 		{ 
 			Connection con = null; 
@@ -41,6 +41,7 @@ public class Item {
 				Connection con = connect();
 				String output = "";
 				if (con == null) {
+					
 					return "Error while connecting to the database";
 				}
 
@@ -65,6 +66,7 @@ public class Item {
 					
 					
 				} catch (SQLException e) {
+					
 					output = "Error while inserting";
 					System.err.println(e.getMessage());
 				}
@@ -124,6 +126,7 @@ public class Item {
 					}
 					
 				} catch (Exception e) {
+					
 					output = "Error while reading the items.";
 					System.err.println(e.getMessage());
 				}
@@ -161,13 +164,15 @@ public class Item {
 			 con.close(); 
 			 output = "Updated Successfully"; 
 			 } 
-			 catch (Exception e) 
-			 { 
+			 catch (Exception e) {
+			 		 
 			 output = "Error while updating the item."; 
 			 System.err.println(e.getMessage()); 
+			 
 			 } 
+			 
 			 return output; 
-			 } 
+		 } 
 			
 			
 				
@@ -193,13 +198,17 @@ public class Item {
 			 // execute the statement
 			 preparedStmt.execute(); 
 			 con.close(); 
-			 output = "Deleted Successfully"; 
+			 output = "Deleted Successfully"; 	 
 			 } 
-			catch (Exception e) 
-			 { 
+			
+			catch (Exception e) {
+			 	
 			 output = "Error while deleting the item."; 
 			 System.err.println(e.getMessage()); 
+			 
 			 } 
+			
 			return output; 
-			}
+			
+		}
 }
