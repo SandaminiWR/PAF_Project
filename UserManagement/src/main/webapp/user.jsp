@@ -157,7 +157,7 @@ if (request.getParameter("name") != null)
 		 User userObj = new User(); 
 		 out.print(userObj.readUser()); 
 	%>
-	
+
 <br>
 	<!--  <table border="1">
 		<tr>
@@ -181,13 +181,16 @@ if (request.getParameter("name") != null)
 			<td><%out.print(session.getAttribute("password")); %></td>
 			<td><%out.print(session.getAttribute("confirmpassword")); %></td>
 		
-			<td><input name="btnUpdate" type="button" value="Update"></td>
+		
+			
+			<td><input name="btnUpdate" type="button" value="Update"></td> 
 			<td><input name="btnRemove" type="button" value="Remove"></td>
 		</tr>
 		
 		
 	</table>
--->
+	
+-->	
 
 </body>
 </html>
