@@ -127,7 +127,7 @@ public class Delivery {
 			} 
 			catch (Exception e) 
 			{ 
-					output = "Error while updating the delivery."; 
+					output = "Error while updating the Delivery."; 
 					System.err.println(e.getMessage()); 
 			} 
 			return output; 
