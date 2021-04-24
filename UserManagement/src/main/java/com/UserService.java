@@ -6,6 +6,7 @@ import javax.ws.rs.core.MediaType;
 //For JSON
 import com.google.gson.*;
 
+import model.Role;
 import model.User;
 
 //For XML
@@ -17,6 +18,7 @@ import org.jsoup.nodes.Document;
 public class UserService {
 	
 				 User usObj = new User(); 
+				  
 				@GET
 				@Path("/") 
 				@Produces(MediaType.TEXT_HTML) 
@@ -106,6 +108,21 @@ public class UserService {
 			    	System.out.print("run");
 			        return usObj.userlogin(id,password) ;
 			    }
+			    
+			    
+			    @POST
+				@Path("/roles") 
+				@Consumes(MediaType.APPLICATION_FORM_URLENCODED)
+				@Produces(MediaType.TEXT_PLAIN)
+
+		public String userRole
+					(@FormParam("userid") String userid, 
+					 @FormParam("roleid") String roleid
+					 )
+					{
+				String output = usObj.AssignRole(userid, roleid);
+					return output;
+					}
 			    
 			    
 			    

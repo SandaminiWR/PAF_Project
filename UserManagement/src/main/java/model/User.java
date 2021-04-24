@@ -3,6 +3,7 @@ package model;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 
 public class User {
@@ -97,10 +98,28 @@ public class User {
 					output += "<td>" + address + "</td>"; 
 					output += "<td>" + email + "</td>"; 
 					output += "<td>" + password + "</td>"; 
-					// buttons
+					
+					/*// buttons
 					output += "<td><input name='btnUpdate' type='button' value='Update'></td>"
+							
+							
 					 + "<td><form method='post' action='user.jsp'>"
 							
+					 + "<input name='btnRemove' type='submit' value='Remove'>"
+					 + "<input name='uid' type='hidden' value='" + UserID + "'>" 
+					 + "</form></td></tr>";  
+					 * 
+					 * 
+					 * 
+					 * 
+					 */
+					// buttons
+					output +=
+							
+							
+					  "<td><form method='post' action='user.jsp'>"
+					+	 "<input name='btnUpdate' type='button' value='Update'>"	
+					+ "<input name='uid' type='hidden' value='" + UserID + "'>"		  
 					 + "<input name='btnRemove' type='submit' value='Remove'>"
 					 + "<input name='uid' type='hidden' value='" + UserID + "'>" 
 					 + "</form></td></tr>"; 
@@ -108,7 +127,7 @@ public class User {
 				
 		 }catch (Exception e) 
 		 { 
-				output = "Error while inserting"; 
+				output = "Error while reading data"; 
 				System.err.println(e.getMessage()); 
 		 } 
 		 
@@ -297,6 +316,52 @@ public class User {
 		catch (Exception e) 
 		{ 
 			output = "Error while Login"; 
+			System.err.println(e.getMessage()); 
+		} 
+		return output; 
+	}
+	
+	
+	public String AssignRole(String uid, String rid) 
+	{
+		
+		String output="";
+		
+		try {
+			
+			Connection con = DBConnection.getConnection();
+			
+			if (con == null) 
+			{ 
+				return "Error while connecting to the database"; 
+			}
+		
+		// create a prepared statement
+		String query = " insert into userrole (`userid`,`roleid`)"
+		 + " values (?, ?)"; 
+		PreparedStatement preparedStmt = con.prepareStatement(query); 
+		// binding values
+		
+		try {	
+			
+			preparedStmt.setInt(1, Integer.parseInt(uid)); 			
+			preparedStmt.setInt(2, Integer.parseInt(rid));
+			
+			//execute the statement
+			preparedStmt.executeUpdate(); 
+			//con.close();
+			output = "Role Assign Successfull"; 
+		}catch(SQLException e) {
+			e.printStackTrace();
+			output = "User is not Found";
+		}
+			
+		
+		
+		} 
+		catch (Exception e) 
+		{ 
+			output = "Error while Role Assign"; 
 			System.err.println(e.getMessage()); 
 		} 
 		return output; 

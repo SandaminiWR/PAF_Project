@@ -28,30 +28,8 @@ if (request.getParameter("name") != null)
  			session.setAttribute("statusMsg", stsMsg); 
  
 	} 
- 
- if (request.getParameter("name") != null) 
-	{ 
 
-	 session.setAttribute("name", request.getParameter("name")); 
-	 session.setAttribute("phone", request.getParameter("phone")); 
-	 session.setAttribute("address", request.getParameter("address"));
-	 session.setAttribute("mail", request.getParameter("mail")); 
-	 session.setAttribute("password", request.getParameter("password")); 
-	 session.setAttribute("confirmpassword", request.getParameter("confirmpassword"));
 
-			 User user1 = new User(); 
-				 String stsMsg = user1.updateUser(request.getParameter("id"),
-						 			request.getParameter("name"),
-				 					request.getParameter("phone"), 
-					 				request.getParameter("address"), 
-				 					request.getParameter("mail"), 
-				 					request.getParameter("password"), 
-					 				request.getParameter("confirmpassword")); 
-
-			session.setAttribute("statusMsg", stsMsg); 
-
-	} 
- 
     
  if (request.getParameter("uid") != null) 
     { 
@@ -173,10 +151,6 @@ if (request.getParameter("name") != null)
     %>
  
 </body>
-	 
-	 
-	 
-	 
 	 
 	<br>
 	<%

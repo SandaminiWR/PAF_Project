@@ -8,7 +8,7 @@
 if (request.getParameter("id") != null) 
 	{ 
 
-	 session.setAttribute("id", request.getParameter("i"));
+	 session.setAttribute("id", request.getParameter("id"));
 	 session.setAttribute("password", request.getParameter("password")); 
  
 	 User us = new User(); 
@@ -39,7 +39,7 @@ if (request.getParameter("id") != null)
  </div>
  </div>
     <%
-        if ("Insert Successfull".equals(session.getAttribute("statusMsg"))) {
+        if ("Login Successfull".equals(session.getAttribute("statusMsg"))) {
     %>
         <div class="alert alert-success" id="alertSuccess">
         <% out.print(session.getAttribute("statusMsg")); %>	</div>
