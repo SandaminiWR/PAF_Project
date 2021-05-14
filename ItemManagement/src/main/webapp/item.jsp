@@ -1,92 +1,73 @@
 <%@page import="model.Item"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-    
-    
-<%  //insert
-     if (request.getParameter("itemCode") != null)
-{
-	 Item itemObj = new Item();
-	 String stsMsg = itemObj.insertItem(request.getParameter("itemCode"),
-			 request.getParameter("itemCategory"),
-			 request.getParameter("itemName"),
-			 request.getParameter("itemBrand"),
-			 request.getParameter("itemDesc"),
-	 		 request.getParameter("itemPrice"));
-	 
-	 System.out.println(stsMsg);
-	 session.setAttribute("statusMsg", stsMsg);
-} 
+  
 
-
-//delete
-	if (request.getParameter("itemID") != null) {
-
-	Item itemObj = new Item(); 
-	String stsMsg = itemObj.deleteItem(request.getParameter("itemID")); 
-
-	System.out.println(stsMsg);
-	session.setAttribute("statusMsg", stsMsg); 
-}
-    
-    
-%>  
-    
 <!DOCTYPE html>
 <html>
 <head>
-
-
-<link rel="stylesheet" href="Views/bootstrap.min.css">
-
-
 <meta charset="ISO-8859-1">
 <title>Item Management</title>
+
+<link rel="stylesheet" href="Views/bootstrap.min.css">
+<script src="Components/jquery-3.2.1.min.js"></script>
+<script src="Components/items.js"></script>
+
+
 </head>
 <body>
 
 <div class="jumbotron jumbotron-fluid">
 
-<center><h1 style="font-size:380%;"><b>ITEM Management</b></h1></center>
-<br>
-<br>
-<div class="container">
- <div class="row">
- 	<div class="col">
+<div class="container"><div class="row"><div class="col-10">
+ 
+	<center><h1 style="font-size:380%;">ITEMS Management</h1></center>
+	<br><br>
+ 
  	
- 	
-<form method="post" action="item.jsp">
- 	 Item Code: <input name="itemCode" type="text" class="form-control">
- 	 Item Category: <input name="itemCategory" type="text" class="form-control">
-	 Item Name: <input name="itemName" type="text" class="form-control"> 
-	 Item Brand: <input name="itemBrand" type="text" class="form-control">
-	 Item Description: <input name="itemDesc" type="text" class="form-control">
-	 Item Price:<input name="itemPrice" type="text" class="form-control"><br><br>
-<center><input name="btnSubmit" type="submit" value="Save Item" class="btn btn-primary"> </center>
+<form id="formItem" name="formItem" method="post" action="item.jsp">
 
-<br>
-
+ 		Item code: 
+ 		<input id="itemCode" name="itemCode" type="text" 
+					 class="form-control form-control-sm">
+					 
+ 		<br> Item category: 
+ 		<input id="itemCategory" name="itemCategory" type="text" 
+ 					class="form-control form-control-sm">
+ 					
+ 		 <br> Item name: 
+ 		<input id="itemName" name="itemName" type="text" 
+ 					class="form-control form-control-sm">
+ 					
+  		<br> Item brand: 
+ 		<input id="itemBrand" name="itemBrand" type="text" 
+ 					class="form-control form-control-sm">
+ 					
+ 		<br> Item description: 
+ 		<input id="itemDesc" name="itemDesc" type="text" 
+ 					class="form-control form-control-sm">
+ 					
+ 		<br> Item price: 
+		 <input id="itemPrice" name="itemPrice" type="text" 
+ 					class="form-control form-control-sm">	
+ 					
+ 		<br>
+ 		<input id="btnSave" name="btnSave" type="button" value="Save" class="btn btn-primary">
+ 		<input type="hidden" id="hidItemIDSave" name="hidItemIDSave" value="">
 </form>
 
-<div class="alert alert-success">
- <% out.print(session.getAttribute("statusMsg"));%>
-</div>
+<div id="alertSuccess" class="alert alert-success"></div>
+<div id="alertError" class="alert alert-danger"></div>
 
-
-
-<%
- out.print(session.getAttribute("statusMsg")); 
-%>
 <br>
-
-<%
- Item itemObj = new Item(); 
- out.print(itemObj.readItems()); 
-%>
-
+<div id="divItemsGrid">
+ <%
+ 	Item itemObj = new Item(); 
+ 	out.print(itemObj.readItems()); 
+ %>
 </div>
- </div>
-</div>
-        
+
+</div> </div> </div> 
+
 </body>
 </html>   
